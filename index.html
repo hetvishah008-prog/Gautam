@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <meta
+        name="theme-color"
+        content="#080309"
+    >
+
+    <title>For Gautam ❤️</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         FLOATING HEART BACKGROUND
+         ===================================================== -->
+
+    <div
+        id="hearts"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         SCREEN 1 — INTRO
+         ===================================================== -->
+
+    <section
+        class="screen active"
+        id="screen1"
+    >
+
+        <div class="content">
+
+            <div class="tiny-heart">
+                ♡
+            </div>
+
+            <p class="eyebrow">
+                A LITTLE SOMETHING FOR YOU
+            </p>
+
+            <h1>
+                Hey Gautam...
+            </h1>
+
+            <p class="message">
+                I made something small,
+                just to keep a few beautiful
+                moments in one place.
+            </p>
+
+            <button onclick="nextScreen(2)">
+                Open This Little Surprise 💗
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCREEN 2 — START
+         ===================================================== -->
+
+    <section
+        class="screen"
+        id="screen2"
+    >
+
+        <div class="content">
+
+            <div class="emoji-big">
+                💕
+            </div>
+
+            <p class="eyebrow">
+                TAKE A LITTLE MOMENT
+            </p>
+
+            <h2>
+                Before You Continue...
+            </h2>
+
+            <p class="message">
+                There are some memories,
+                some words and a little
+                surprise waiting for you.
+            </p>
+
+            <button onclick="nextScreen(3)">
+                Continue ✨
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCREEN 3 — TYPING MESSAGE
+         ===================================================== -->
+
+    <section
+        class="screen"
+        id="screen3"
+    >
+
+        <div class="content">
+
+            <p class="eyebrow">
+                SOMETHING I WANTED TO SAY
+            </p>
+
+            <div class="typing-box">
+
+                <p id="typingText"></p>
+
+            </div>
+
+            <button
+                id="screen3Button"
+                class="hidden-button"
+                onclick="nextScreen(4)"
+            >
+                Keep Going 💗
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCREEN 4 — BOYFRIEND'S DAY
+         ===================================================== -->
+
+    <section
+        class="screen"
+        id="screen4"
+    >
+
+        <div class="content">
+
+            <p class="eyebrow">
+                TODAY'S LITTLE SURPRISE
+            </p>
+
+            <h1 class="boyfriend-day">
+                Happy<br>
+                Boyfriend's Day
+            </h1>
+
+            <p class="name">
+                Gautam ❤️
+            </p>
+
+            <p class="message">
+                Some people become special
+                through the little moments
+                we share with them.
+            </p>
+
+            <button onclick="nextScreen(5)">
+                There's More 💕
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCREEN 5 — INTERACTIVE HEART
+         ===================================================== -->
+
+    <section
+        class="screen"
+        id="screen5"
+    >
+
+        <div class="content">
+
+            <p class="eyebrow">
+                ONE LITTLE THING
+            </p>
+
+            <h2>
+                Find My Heart
+            </h2>
+
+            <p
+                class="hint"
+                id="heartInstruction"
+            >
+                Tap the heart 💗
+            </p>
+
+
+            <div
+                class="interactive-heart"
+                onclick="heartClicked()"
+            >
+
+                <div class="heart-shape">
+                    ❤️
+                </div>
+
+            </div>
+
+
+            <div id="heartMessage"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCREEN 6 — MEMORY INTRO
+         ===================================================== -->
+
+    <section
+        class="screen"
+        id="screen6"
+    >
+
+        <div class="content">
+
+            <div class="emoji-big">
+                📸
+            </div>
+
+            <p class="eyebrow">
+                A FEW LITTLE MEMORIES
+            </p>
+
+            <h2>
+                Our Moments
+            </h2>
+
+            <p class="message">
+                Five pictures.
+                Five little moments.
+                And a lot of feelings attached
+                to them.
+            </p>
+
+            <button onclick="showMemory(1)">
+                Start The Memories 📸
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MEMORY 1
+         ===================================================== -->
+
+    <section
+        class="screen memory-screen"
+        id="memory1"
+    >
+
+        <div class="memory-photo">
+
+            <img
+                src="memory1.jpg"
+                alt="Our first memory"
+            >
+
+            <div class="photo-overlay"></div>
+
+        </div>
+
+
+        <div class="memory-text">
+
+            <p class="memory-number">
+                MEMORY 01
+            </p>
+
+            <h2>
+                A Little Moment ❤️
+            </h2>
+
+            <p>
+                Sometimes even the simplest
+                moments become the ones
+                we remember the most.
+            </p>
+
+            <button onclick="showMemory(2)">
+                Next Memory →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MEMORY 2
+         ===================================================== -->
+
+    <section
+        class="screen memory-screen"
+        id="memory2"
+    >
+
+        <div class="memory-photo">
+
+            <img
+                src="special1.jpg"
+                alt="Special memory"
+            >
+
+            <div class="photo-overlay"></div>
+
+        </div>
+
+
+        <div class="memory-text">
+
+            <p class="memory-number">
+                MEMORY 02
+            </p>
+
+            <h2>
+                Something Special 💗
+            </h2>
+
+            <p>
+                A picture can hold a feeling
+                that words sometimes cannot.
+            </p>
+
+            <button onclick="showMemory(3)">
+                Next Memory →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MEMORY 3
+         ===================================================== -->
+
+    <section
+        class="screen memory-screen"
+        id="memory3"
+    >
+
+        <div class="memory-photo">
+
+            <img
+                src="funny.jpg"
+                alt="Funny memory"
+            >
+
+            <div class="photo-overlay"></div>
+
+        </div>
+
+
+        <div class="memory-text">
+
+            <p class="memory-number">
+                MEMORY 03
+            </p>
+
+            <h2>
+                The Funny One 😂
+            </h2>
+
+            <p>
+                Because not every memory
+                has to be serious.
+                Some are simply there
+                to make us smile.
+            </p>
+
+            <button onclick="showMemory(4)">
+                Next Memory →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MEMORY 4
+         ===================================================== -->
+
+    <section
+        class="screen memory-screen"
+        id="memory4"
+    >
+
+        <div class="memory-photo">
+
+            <img
+                src="special2.jpg"
+                alt="Beautiful memory"
+            >
+
+            <div class="photo-overlay"></div>
+
+        </div>
+
+
+        <div class="memory-text">
+
+            <p class="memory-number">
+                MEMORY 04
+            </p>
+
+            <h2>
+                One More Smile 💕
+            </h2>
+
+            <p>
+                Another little moment that
+                deserves a place in this
+                tiny collection.
+            </p>
+
+            <button onclick="showMemory(5)">
+                Next Memory →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MEMORY 5
+         ===================================================== -->
+
+    <section
+        class="screen memory-screen"
+        id="memory5"
+    >
+
+        <div class="memory-photo">
+
+            <img
+                src="favourite.jpg"
+                alt="Favourite memory"
+            >
+
+            <div class="photo-overlay"></div>
+
+        </div>
+
+
+        <div class="memory-text">
+
+            <p class="memory-number">
+                MEMORY 05
+            </p>
+
+            <h2>
+                My Favourite One 💖
+            </h2>
+
+            <p>
+                And here we are...
+                one more memory to keep.
+            </p>
+
+            <button onclick="nextScreen(8)">
+                One Last Surprise ✉️
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCREEN 8 — ENVELOPE
+         ===================================================== -->
+
+    <section
+        class="screen envelope-screen"
+        id="screen8"
+    >
+
+        <div class="envelope-intro">
+
+            <p class="small-label">
+                SOMETHING WRITTEN FOR YOU
+            </p>
+
+            <h1>
+                A Letter
+            </h1>
+
+            <p>
+                There's one more thing
+                I wanted you to read.
+            </p>
+
+
+            <div
+                class="envelope-wrapper"
+                id="envelopeWrapper"
+                onclick="openEnvelope()"
+            >
+
+                <div class="envelope">
+
+                    <div class="envelope-back"></div>
+
+                    <div class="letter-paper">
+
+                        <span>
+                            💌
+                        </span>
+
+                        <p>
+                            For Gautam
+                        </p>
+
+                        <small>
+                            With love
+                        </small>
+
+                    </div>
+
+                    <div class="envelope-front"></div>
+
+                    <div class="envelope-flap"></div>
+
+                    <div class="envelope-heart">
+                        ❤️
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p
+                class="tap-envelope"
+                id="envelopeHint"
+            >
+                Tap the envelope 💌
+            </p>
+
+
+            <button
+                id="letterButton"
+                class="hidden-button"
+                onclick="showLetter()"
+            >
+                Read My Letter 💌
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LETTER SCREEN
+         ===================================================== -->
+
+    <section
+        class="screen letter-screen"
+        id="letterScreen"
+    >
+
+        <div class="letter-container">
+
+            <div class="letter">
+
+                <div class="letter-top">
+                    💌
+                </div>
+
+                <h2>
+                    Dear Gautam,
+                </h2>
+
+                <p>
+                    I don't always know how to put
+                    everything I feel into words,
+                    so I wanted to leave a few of
+                    them here.
+                </p>
+
+                <p>
+                    There are moments that stay with
+                    us because of how they made us
+                    feel. The laughs, the silly
+                    conversations, the memories,
+                    and even the ordinary days that
+                    somehow became special.
+                </p>
+
+                <p>
+                    Thank you for being a part of
+                    so many of those moments.
+                    Whatever the day looks like,
+                    I hope you always remember that
+                    the memories we've made matter
+                    to me.
+                </p>
+
+                <p>
+                    I made this little website because
+                    sometimes a small surprise can say
+                    what a normal message cannot.
+                </p>
+
+                <p class="letter-final">
+                    Keep smiling, keep being yourself,
+                    and keep the beautiful memories
+                    close. ❤️
+                </p>
+
+                <div class="signature">
+
+                    With lots of love,
+
+                    <br>
+
+                    <strong>
+                        Hetvi
+                    </strong>
+
+                    <span>
+                        ❤️
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="continue-button"
+                    onclick="nextScreen(10)"
+                >
+                    One Last Thing 💖
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FINAL SCREEN
+         ===================================================== -->
+
+    <section
+        class="screen final"
+        id="screen10"
+    >
+
+        <div class="content">
+
+            <div class="final-heart">
+                ❤️
+            </div>
+
+            <p class="eyebrow">
+                THIS IS THE LAST PAGE
+            </p>
+
+            <h2>
+                One Last Surprise
+            </h2>
+
+            <p class="final-message">
+                Thank you for taking the time to
+                go through this little journey.
+                I hope it made you smile.
+            </p>
+
+            <div class="final-love">
+                💗
+            </div>
+
+            <p class="final-signature">
+                Made with lots of little memories
+                and a whole lot of love.
+            </p>
+
+            <button onclick="finalCelebration()">
+                Send You A Million Hearts 💖
+            </button>
+
+            <p class="made">
+                MADE JUST FOR YOU
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
