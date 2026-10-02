@@ -1,1029 +1,538 @@
 /* =========================================================
-   GAUTAM — BOYFRIEND'S DAY
+   GAUTAM — BOYFRIEND'S DAY SURPRISE
    COMPLETE JAVASCRIPT
-   ========================================================= */
+========================================================= */
 
 
 /* =========================================================
    GLOBAL VARIABLES
-   ========================================================= */
+========================================================= */
 
-let typingStarted = false;
-
-let heartClickedOnce = false;
-
+let currentScreen = 1;
+let heartAlreadyClicked = false;
 let envelopeOpened = false;
-
-
-/* =========================================================
-   TYPING MESSAGE
-   ========================================================= */
-
-const typingMessage =
-    "No matter how many little moments pass us by... some people slowly become a beautiful part of your story. And Gautam, you are one of those people for me. ❤️";
+let typingStarted = false;
 
 
 /* =========================================================
    SCREEN NAVIGATION
-   ========================================================= */
+========================================================= */
 
 function nextScreen(number) {
 
-    const current =
-        document.querySelector(
-            ".screen.active"
-        );
-
-    const next =
-        document.getElementById(
-            "screen" + number
-        );
-
-
-    if (!next) {
-        return;
-    }
-
+    const current = document.querySelector(".screen.active");
 
     if (current) {
-
-        current.classList.remove(
-            "active"
-        );
-
-        setTimeout(() => {
-
-            current.style.display =
-                "none";
-
-        }, 700);
+        current.classList.remove("active");
     }
 
+    const next = document.getElementById("screen" + number);
 
-    next.style.display = "flex";
-
-
-    setTimeout(() => {
-
-        next.classList.add(
-            "active"
-        );
-
-    }, 50);
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-
-    /* START TYPING */
-
-    if (number === 3) {
-
-        setTimeout(() => {
-
-            startTyping();
-
-        }, 700);
+    if (next) {
+        next.classList.add("active");
+        currentScreen = number;
     }
 
+    if (number === 3 && !typingStarted) {
+        startTyping();
+    }
+}
 
-    /* SMALL CELEBRATIONS */
 
-    if (
-        number === 4 ||
-        number === 6
-    ) {
+/* =========================================================
+   TYPING MESSAGE
+========================================================= */
+
+const typingMessage =
+    "Sometimes you don't need a big reason to make someone a little surprise. Sometimes you simply do it because that person has become a beautiful part of your memories. ❤️";
+
+function startTyping() {
+
+    typingStarted = true;
+
+    const textElement =
+        document.getElementById("typingText");
+
+    const button =
+        document.getElementById("screen3Button");
+
+    if (!textElement) return;
+
+    textElement.textContent = "";
+
+    let index = 0;
+
+    const typingSpeed = 42;
+
+    function typeNext() {
+
+        if (index < typingMessage.length) {
+
+            textElement.textContent +=
+                typingMessage.charAt(index);
+
+            index++;
+
+            setTimeout(typeNext, typingSpeed);
+
+        } else {
+
+            if (button) {
+                button.classList.add("show");
+            }
+        }
+    }
+
+    typeNext();
+}
+
+
+/* =========================================================
+   INTERACTIVE HEART
+========================================================= */
+
+function heartClicked() {
+
+    const message =
+        document.getElementById("heartMessage");
+
+    const instruction =
+        document.getElementById("heartInstruction");
+
+    if (!heartAlreadyClicked) {
+
+        heartAlreadyClicked = true;
+
+        if (instruction) {
+            instruction.textContent =
+                "You found it... ❤️";
+        }
+
+        if (message) {
+
+            message.innerHTML = `
+                <p>
+                    My heart has always been hiding
+                    in the little moments. 💗
+                </p>
+            `;
+
+        }
+
+        createHeartBurst();
 
         setTimeout(() => {
 
-            smallHeartExplosion();
+            const button =
+                document.createElement("button");
 
-        }, 500);
+            button.textContent =
+                "See Our Memories 📸";
+
+            button.onclick = function () {
+                nextScreen(6);
+            };
+
+            if (message) {
+                message.appendChild(button);
+            }
+
+        }, 900);
+    }
+}
+
+
+/* =========================================================
+   HEART BURST
+========================================================= */
+
+function createHeartBurst() {
+
+    for (let i = 0; i < 24; i++) {
+
+        const heart =
+            document.createElement("span");
+
+        heart.className =
+            "burst-heart";
+
+        heart.textContent =
+            Math.random() > .5 ? "♡" : "♥";
+
+        heart.style.setProperty(
+            "--x",
+            ((Math.random() - .5) * 420) + "px"
+        );
+
+        heart.style.setProperty(
+            "--y",
+            ((Math.random() - .5) * 420) + "px"
+        );
+
+        heart.style.setProperty(
+            "--size",
+            (14 + Math.random() * 22) + "px"
+        );
+
+        heart.style.animationDelay =
+            (Math.random() * .25) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 2200);
     }
 }
 
 
 /* =========================================================
    MEMORY NAVIGATION
-   ========================================================= */
+========================================================= */
 
 function showMemory(number) {
 
-    const allScreens =
-        document.querySelectorAll(
-            ".screen"
-        );
-
-
-    allScreens.forEach(
-        screen => {
-
-            screen.classList.remove(
-                "active"
-            );
-
-            screen.style.display =
-                "none";
-        }
-    );
-
-
-    const memory =
-        document.getElementById(
-            "memory" + number
-        );
-
-
-    if (!memory) {
-        return;
-    }
-
-
-    memory.style.display =
-        "flex";
-
-
-    setTimeout(() => {
-
-        memory.classList.add(
-            "active"
-        );
-
-    }, 50);
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
     });
 
+    const memory =
+        document.getElementById("memory" + number);
 
-    setTimeout(() => {
+    if (memory) {
+        memory.classList.add("active");
+    }
 
-        smallHeartExplosion();
-
-    }, 500);
+    currentScreen = "memory" + number;
 }
 
 
 /* =========================================================
-   TYPING EFFECT
-   ========================================================= */
-
-function startTyping() {
-
-    if (typingStarted) {
-        return;
-    }
-
-
-    typingStarted = true;
-
-
-    const textElement =
-        document.getElementById(
-            "typingText"
-        );
-
-
-    const button =
-        document.getElementById(
-            "screen3Button"
-        );
-
-
-    if (!textElement) {
-        return;
-    }
-
-
-    let index = 0;
-
-
-    textElement.innerHTML =
-        "";
-
-
-    if (button) {
-
-        button.classList.remove(
-            "show"
-        );
-    }
-
-
-    function typeCharacter() {
-
-        if (
-            index <
-            typingMessage.length
-        ) {
-
-            textElement.innerHTML +=
-                typingMessage.charAt(
-                    index
-                );
-
-
-            index++;
-
-
-            setTimeout(
-                typeCharacter,
-                42
-            );
-
-        } else {
-
-            if (button) {
-
-                button.classList.add(
-                    "show"
-                );
-            }
-        }
-    }
-
-
-    typeCharacter();
-}
-
-
-/* =========================================================
-   INTERACTIVE HEART
-   ========================================================= */
-
-function heartClicked() {
-
-    const heart =
-        document.querySelector(
-            ".heart-shape"
-        );
-
-
-    const instruction =
-        document.getElementById(
-            "heartInstruction"
-        );
-
-
-    const message =
-        document.getElementById(
-            "heartMessage"
-        );
-
-
-    if (!heart) {
-        return;
-    }
-
-
-    /* Make heart bigger */
-
-    heart.style.transform =
-        "scale(1.5)";
-
-
-    heart.style.filter =
-        "drop-shadow(0 0 70px rgba(255,30,90,1))";
-
-
-    /* Change instruction */
-
-    if (instruction) {
-
-        instruction.innerHTML =
-            "You found my heart... ❤️";
-    }
-
-
-    /* Message */
-
-    if (message) {
-
-        message.innerHTML =
-            "I LOVE YOU, GAUTAM ❤️";
-    }
-
-
-    /* Heart burst */
-
-    createHeartBurst();
-
-
-    /* Add next button only once */
-
-    if (!heartClickedOnce) {
-
-        heartClickedOnce = true;
-
-
-        setTimeout(() => {
-
-            const nextButton =
-                document.createElement(
-                    "button"
-                );
-
-
-            nextButton.innerHTML =
-                "Let's Look At Our Memories 📸";
-
-
-            nextButton.onclick =
-                function () {
-
-                    nextScreen(6);
-
-                };
-
-
-            nextButton.style.marginTop =
-                "25px";
-
-
-            if (message) {
-
-                message.appendChild(
-                    nextButton
-                );
-            }
-
-        }, 1200);
-    }
-}
-
-
-/* =========================================================
-   FLOATING BACKGROUND HEARTS
-   ========================================================= */
-
-function createFloatingHeart() {
-
-    const container =
-        document.getElementById(
-            "hearts"
-        );
-
-
-    if (!container) {
-        return;
-    }
-
-
-    const heart =
-        document.createElement(
-            "span"
-        );
-
-
-    heart.className =
-        "floating-heart";
-
-
-    heart.textContent =
-        Math.random() > 0.5
-            ? "♡"
-            : "♥";
-
-
-    /*
-       RANDOM HORIZONTAL POSITION
-
-       IMPORTANT:
-       We directly set LEFT instead
-       of relying on layout.
-    */
-
-    heart.style.setProperty(
-        "left",
-        (
-            Math.random() * 100
-        ) + "%",
-        "important"
-    );
-
-
-    /* RANDOM SIZE */
-
-    heart.style.setProperty(
-        "font-size",
-        (
-            12 +
-            Math.random() * 18
-        ) + "px",
-        "important"
-    );
-
-
-    /* RANDOM SPEED */
-
-    heart.style.setProperty(
-        "--heart-duration",
-        (
-            6 +
-            Math.random() * 6
-        ) + "s"
-    );
-
-
-    /* RANDOM SIDE MOVEMENT */
-
-    heart.style.setProperty(
-        "--heart-drift",
-        (
-            -80 +
-            Math.random() * 160
-        ) + "px"
-    );
-
-
-    /*
-       FORCE INDEPENDENT POSITIONING
-    */
-
-    heart.style.setProperty(
-        "position",
-        "fixed",
-        "important"
-    );
-
-
-    heart.style.setProperty(
-        "bottom",
-        "-50px",
-        "important"
-    );
-
-
-    heart.style.setProperty(
-        "top",
-        "auto",
-        "important"
-    );
-
-
-    container.appendChild(
-        heart
-    );
-
-
-    setTimeout(() => {
-
-        if (heart.parentNode) {
-
-            heart.remove();
-
-        }
-
-    }, 14000);
-}
-
-
-/* =========================================================
-   START BACKGROUND HEARTS
-   ========================================================= */
-
-function startFloatingHearts() {
-
-    /*
-       Create some hearts immediately
-       so the background doesn't look empty.
-    */
-
-    for (
-        let i = 0;
-        i < 8;
-        i++
-    ) {
-
-        setTimeout(
-            createFloatingHeart,
-            i * 250
-        );
-    }
-
-
-    /*
-       Continue creating hearts.
-    */
-
-    setInterval(
-        createFloatingHeart,
-        800
-    );
-}
-
-
-/* =========================================================
-   BIG HEART BURST
-   ========================================================= */
-
-function createHeartBurst() {
-
-    const symbols = [
-        "❤️",
-        "💕",
-        "💖",
-        "💗",
-        "✨"
-    ];
-
-
-    for (
-        let i = 0;
-        i < 35;
-        i++
-    ) {
-
-        const heart =
-            document.createElement(
-                "div"
-            );
-
-
-        heart.classList.add(
-            "celebration-heart"
-        );
-
-
-        heart.innerHTML =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
-
-
-        heart.style.left =
-            "50vw";
-
-
-        heart.style.top =
-            "50vh";
-
-
-        const x =
-            Math.random() *
-            600 -
-            300;
-
-
-        const y =
-            Math.random() *
-            600 -
-            300;
-
-
-        heart.style.setProperty(
-            "--x",
-            x + "px"
-        );
-
-
-        heart.style.setProperty(
-            "--y",
-            y + "px"
-        );
-
-
-        heart.style.fontSize =
-            (
-                15 +
-                Math.random() *
-                25
-            ) + "px";
-
-
-        document.body.appendChild(
-            heart
-        );
-
-
-        setTimeout(() => {
-
-            if (heart.parentNode) {
-
-                heart.remove();
-
-            }
-
-        }, 3000);
-    }
-}
-
-
-/* =========================================================
-   SMALL HEART EXPLOSION
-   ========================================================= */
-
-function smallHeartExplosion() {
-
-    const symbols = [
-        "❤️",
-        "💕",
-        "✨"
-    ];
-
-
-    for (
-        let i = 0;
-        i < 12;
-        i++
-    ) {
-
-        const heart =
-            document.createElement(
-                "div"
-            );
-
-
-        heart.classList.add(
-            "celebration-heart"
-        );
-
-
-        heart.innerHTML =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
-
-
-        heart.style.left =
-            (
-                Math.random() *
-                100
-            ) + "vw";
-
-
-        heart.style.top =
-            (
-                Math.random() *
-                100
-            ) + "vh";
-
-
-        heart.style.setProperty(
-            "--x",
-            (
-                Math.random() *
-                200 -
-                100
-            ) + "px"
-        );
-
-
-        heart.style.setProperty(
-            "--y",
-            (
-                Math.random() *
-                -250 -
-                50
-            ) + "px"
-        );
-
-
-        document.body.appendChild(
-            heart
-        );
-
-
-        setTimeout(() => {
-
-            if (heart.parentNode) {
-
-                heart.remove();
-
-            }
-
-        }, 3000);
-    }
-}
-
-
-/* =========================================================
-   ENVELOPE OPENING
-   ========================================================= */
+   ENVELOPE
+========================================================= */
 
 function openEnvelope() {
 
-    const wrapper =
-        document.getElementById(
-            "envelopeWrapper"
-        );
-
-
-    const hint =
-        document.getElementById(
-            "envelopeHint"
-        );
-
-
-    const button =
-        document.getElementById(
-            "letterButton"
-        );
-
-
-    if (!wrapper) {
-        return;
-    }
-
-
-    if (envelopeOpened) {
-        return;
-    }
-
+    if (envelopeOpened) return;
 
     envelopeOpened = true;
 
+    const wrapper =
+        document.getElementById("envelopeWrapper");
 
-    wrapper.classList.add(
-        "opened"
-    );
+    const hint =
+        document.getElementById("envelopeHint");
 
+    const button =
+        document.getElementById("letterButton");
 
-    if (hint) {
-
-        hint.innerHTML =
-            "The letter is ready for you 💌";
+    if (wrapper) {
+        wrapper.classList.add("open");
     }
 
+    if (hint) {
+        hint.textContent =
+            "Something special is waiting inside... 💌";
+    }
 
     setTimeout(() => {
 
         if (button) {
-
-            button.classList.add(
-                "show"
-            );
+            button.classList.add("show");
         }
 
-    }, 1000);
-
-
-    smallHeartExplosion();
+    }, 1200);
 }
 
 
 /* =========================================================
    SHOW LETTER
-   ========================================================= */
+========================================================= */
 
 function showLetter() {
 
-    const allScreens =
-        document.querySelectorAll(
-            ".screen"
-        );
-
-
-    allScreens.forEach(
-        screen => {
-
-            screen.classList.remove(
-                "active"
-            );
-
-            screen.style.display =
-                "none";
-        }
-    );
-
-
-    const letterScreen =
-        document.getElementById(
-            "letterScreen"
-        );
-
-
-    if (!letterScreen) {
-        return;
-    }
-
-
-    letterScreen.style.display =
-        "flex";
-
-
-    setTimeout(() => {
-
-        letterScreen.classList.add(
-            "active"
-        );
-
-    }, 50);
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
     });
 
+    const letterScreen =
+        document.getElementById("letterScreen");
+
+    if (letterScreen) {
+        letterScreen.classList.add("active");
+
+        letterScreen.scrollTop = 0;
+    }
+
+    currentScreen = "letterScreen";
+}
+
+
+/* =========================================================
+   FLOATING BACKGROUND HEARTS
+========================================================= */
+
+function createFloatingHeart() {
+
+    const container =
+        document.getElementById("hearts");
+
+    if (!container) return;
+
+    const heart =
+        document.createElement("span");
+
+    heart.className =
+        "floating-heart";
+
+    heart.textContent =
+        Math.random() > .45 ? "♡" : "♥";
+
+    const left =
+        Math.random() * 100;
+
+    const size =
+        12 + Math.random() * 25;
+
+    const duration =
+        7 + Math.random() * 7;
+
+    const drift =
+        (Math.random() - .5) * 180;
+
+    heart.style.setProperty(
+        "left",
+        left + "%",
+        "important"
+    );
+
+    heart.style.fontSize =
+        size + "px";
+
+    heart.style.setProperty(
+        "--duration",
+        duration + "s"
+    );
+
+    heart.style.setProperty(
+        "--drift",
+        drift + "px"
+    );
+
+    container.appendChild(heart);
 
     setTimeout(() => {
 
-        smallHeartExplosion();
+        heart.remove();
 
-    }, 600);
+    }, (duration + 1) * 1000);
 }
+
+
+/* =========================================================
+   START FLOATING HEARTS
+========================================================= */
+
+setInterval(() => {
+
+    createFloatingHeart();
+
+}, 650);
 
 
 /* =========================================================
    FINAL MILLION HEARTS
-   ========================================================= */
+========================================================= */
 
 function finalCelebration() {
 
-    const symbols = [
-        "❤️",
-        "💕",
-        "💗",
-        "💖",
-        "♡",
-        "✨"
-    ];
+    const button =
+        document.querySelector("#screen10 button");
 
+    if (button) {
 
-    /*
-       Create a large burst
-       directly on BODY.
+        button.disabled = true;
 
-       This is intentionally NOT
-       inside #hearts.
-    */
+        button.textContent =
+            "Sending all my hearts... ❤️";
+    }
 
-    for (
-        let i = 0;
-        i < 80;
-        i++
-    ) {
+    /* Initial heart burst */
 
-        const heart =
-            document.createElement(
-                "span"
-            );
-
-
-        heart.className =
-            "celebration-heart";
-
-
-        heart.textContent =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
-
-
-        /* Start from center */
-
-        heart.style.left =
-            "50%";
-
-
-        heart.style.top =
-            "50%";
-
-
-        /* Random direction */
-
-        const angle =
-            Math.random() *
-            Math.PI *
-            2;
-
-
-        const distance =
-            100 +
-            Math.random() *
-            350;
-
-
-        const x =
-            Math.cos(angle) *
-            distance;
-
-
-        const y =
-            Math.sin(angle) *
-            distance;
-
-
-        heart.style.setProperty(
-            "--x",
-            x + "px"
-        );
-
-
-        heart.style.setProperty(
-            "--y",
-            y + "px"
-        );
-
-
-        /* Random size */
-
-        heart.style.fontSize =
-            (
-                16 +
-                Math.random() *
-                24
-            ) + "px";
-
-
-        /* Random delay */
-
-        heart.style.animationDelay =
-            (
-                Math.random() *
-                0.5
-            ) + "s";
-
-
-        document.body.appendChild(
-            heart
-        );
-
+    for (let i = 0; i < 90; i++) {
 
         setTimeout(() => {
 
-            if (heart.parentNode) {
+            createCelebrationHeart();
 
-                heart.remove();
+        }, i * 18);
+    }
 
-            }
+    /* Second wave */
 
-        }, 3500);
+    setTimeout(() => {
+
+        for (let i = 0; i < 70; i++) {
+
+            setTimeout(() => {
+
+                createCelebrationHeart();
+
+            }, i * 15);
+        }
+
+    }, 700);
+
+
+    /* Final message */
+
+    setTimeout(() => {
+
+        showFinalMessage();
+
+    }, 2600);
+}
+
+
+/* =========================================================
+   CREATE CELEBRATION HEART
+========================================================= */
+
+function createCelebrationHeart() {
+
+    const heart =
+        document.createElement("span");
+
+    heart.className =
+        "celebration-heart";
+
+    heart.textContent =
+        Math.random() > .35 ? "❤️" : "💗";
+
+    heart.style.setProperty(
+        "--x",
+        ((Math.random() - .5) * window.innerWidth * 1.4) + "px"
+    );
+
+    heart.style.setProperty(
+        "--y",
+        ((Math.random() - .5) * window.innerHeight * 1.3) + "px"
+    );
+
+    heart.style.setProperty(
+        "--size",
+        (14 + Math.random() * 25) + "px"
+    );
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, 3200);
+}
+
+
+/* =========================================================
+   FINAL MESSAGE
+========================================================= */
+
+function showFinalMessage() {
+
+    const content =
+        document.querySelector("#screen10 .content");
+
+    if (!content) return;
+
+    const existing =
+        document.getElementById("finalThankYou");
+
+    if (existing) return;
+
+    const message =
+        document.createElement("div");
+
+    message.id =
+        "finalThankYou";
+
+    message.innerHTML = `
+        <div style="
+            margin-top:25px;
+            font-size:1.25rem;
+            color:#ffb5e4;
+            line-height:1.7;
+            animation:screenIn .8s ease forwards;
+        ">
+            From my little corner of the internet
+            to your heart... ❤️
+            <br><br>
+            I LOVE YOU SOO MUCHH 🥹💗
+        </div>
+    `;
+
+    content.appendChild(message);
+}
+
+
+/* =========================================================
+   SMALL HEART EXPLOSION
+========================================================= */
+
+function smallHeartExplosion() {
+
+    for (let i = 0; i < 18; i++) {
+
+        const heart =
+            document.createElement("span");
+
+        heart.className =
+            "burst-heart";
+
+        heart.textContent = "💗";
+
+        heart.style.setProperty(
+            "--x",
+            ((Math.random() - .5) * 300) + "px"
+        );
+
+        heart.style.setProperty(
+            "--y",
+            ((Math.random() - .5) * 300) + "px"
+        );
+
+        heart.style.setProperty(
+            "--size",
+            (12 + Math.random() * 18) + "px"
+        );
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 2000);
     }
 }
 
 
 /* =========================================================
-   PAGE LOAD
-   ========================================================= */
+   DOM READY
+========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-        /*
-           Make only screen 1 visible
-           initially.
-        */
+        /* Start a few hearts immediately */
 
-        const screens =
-            document.querySelectorAll(
-                ".screen"
-            );
+        for (let i = 0; i < 8; i++) {
 
+            setTimeout(() => {
 
-        screens.forEach(
-            screen => {
+                createFloatingHeart();
 
-                if (
-                    screen.id !==
-                    "screen1"
-                ) {
-
-                    screen.style.display =
-                        "none";
-                }
-            }
-        );
-
-
-        const firstScreen =
-            document.getElementById(
-                "screen1"
-            );
-
-
-        if (firstScreen) {
-
-            firstScreen.style.display =
-                "flex";
-
-            firstScreen.classList.add(
-                "active"
-            );
+            }, i * 300);
         }
-
-
-        /*
-           Start floating background hearts.
-        */
-
-        startFloatingHearts();
 
     }
 );

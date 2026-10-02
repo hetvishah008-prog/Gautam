@@ -1,21 +1,7 @@
 /* =========================================================
-   GAUTAM — BOYFRIEND'S DAY
-   MOBILE-FIRST CINEMATIC WEBSITE
-   ========================================================= */
-
-
-/* =========================================================
-   GOOGLE FONTS
-   ========================================================= */
-
-@import url(
-    'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap'
-);
-
-
-/* =========================================================
-   RESET
-   ========================================================= */
+   GAUTAM — BOYFRIEND'S DAY SURPRISE
+   COMPLETE STYLE
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -23,672 +9,75 @@
     padding: 0;
 }
 
-
 html,
 body {
     width: 100%;
     min-height: 100%;
+}
 
+body {
+    background:
+        radial-gradient(circle at 50% 20%, #241020 0%, #0d0710 45%, #050205 100%);
+    color: #ffffff;
+    font-family: Georgia, "Times New Roman", serif;
     overflow: hidden;
 }
 
 
-body {
-    font-family: "Poppins", sans-serif;
-
-    color: white;
-
-    background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(190, 55, 145, 0.25),
-            transparent 40%
-        ),
-
-        radial-gradient(
-            circle at 20% 80%,
-            rgba(100, 40, 150, 0.20),
-            transparent 40%
-        ),
-
-        linear-gradient(
-            145deg,
-            #080309,
-            #160813,
-            #09040d
-        );
-
-    -webkit-tap-highlight-color: transparent;
-}
-
-
 /* =========================================================
-   SCREEN SYSTEM
-   ========================================================= */
-
-.screen {
-
-    position: fixed;
-
-    inset: 0;
-
-    width: 100vw;
-    height: 100dvh;
-
-    min-height: 100dvh;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding:
-        max(25px, env(safe-area-inset-top))
-        20px
-        max(25px, env(safe-area-inset-bottom))
-        20px;
-
-    opacity: 0;
-    visibility: hidden;
-
-    pointer-events: none;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    transform: scale(1.03);
-
-    transition:
-        opacity 0.7s ease,
-        transform 0.7s ease,
-        visibility 0.7s ease;
-
-    z-index: 10;
-}
-
-
-.screen.active {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform: scale(1);
-
-    z-index: 10;
-}
-
-
-/* =========================================================
-   CONTENT
-   ========================================================= */
-
-.content {
-
-    width: 100%;
-
-    max-width: 600px;
-
-    margin: auto;
-
-    text-align: center;
-
-    position: relative;
-
-    z-index: 20;
-}
-
-
-/* =========================================================
-   TEXT
-   ========================================================= */
-
-.eyebrow {
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    line-height: 1.6;
-
-    color: #ffacdF;
-
-    margin-bottom: 18px;
-
-    font-weight: 500;
-}
-
-
-h1 {
-
-    font-family: "Dancing Script", cursive;
-
-    font-size:
-        clamp(
-            48px,
-            15vw,
-            82px
-        );
-
-    line-height: 0.98;
-
-    font-weight: 600;
-
-    color: white;
-
-    text-shadow:
-        0 0 25px
-        rgba(255, 90, 190, 0.18);
-
-    margin-bottom: 20px;
-}
-
-
-h2 {
-
-    font-family: "Dancing Script", cursive;
-
-    font-size:
-        clamp(
-            38px,
-            11vw,
-            60px
-        );
-
-    line-height: 1;
-
-    margin-bottom: 18px;
-}
-
-
-.message {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 20px;
-
-    line-height: 1.6;
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.82
-        );
-
-    margin:
-        0 auto 28px;
-
-    max-width: 480px;
-}
-
-
-.hint {
-
-    font-size: 12px;
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.5
-        );
-
-    margin-bottom: 25px;
-}
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-button {
-
-    appearance: none;
-
-    border: none;
-
-    outline: none;
-
-    min-height: 52px;
-
-    padding:
-        14px 25px;
-
-    border-radius: 999px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff62c5,
-            #b966ff
-        );
-
-    color: white;
-
-    font-family:
-        "Poppins",
-        sans-serif;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    letter-spacing: 0.2px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 10px 30px
-        rgba(
-            255,
-            70,
-            190,
-            0.22
-        );
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-
-    touch-action: manipulation;
-}
-
-
-button:active {
-
-    transform:
-        scale(0.95);
-}
-
-
-@media (hover: hover) {
-
-    button:hover {
-
-        transform:
-            translateY(-3px);
-
-        box-shadow:
-            0 15px 35px
-            rgba(
-                255,
-                70,
-                190,
-                0.35
-            );
-    }
-}
-
-
-/* =========================================================
-   INTRO HEART
-   ========================================================= */
-
-.tiny-heart {
-
-    font-size: 42px;
-
-    margin-bottom: 20px;
-
-    color: #ff9edc;
-
-    animation:
-        heartbeat
-        1.8s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes heartbeat {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.18);
-    }
-}
-
-
-/* =========================================================
-   BIG EMOJI
-   ========================================================= */
-
-.emoji-big {
-
-    font-size: 60px;
-
-    margin-bottom: 15px;
-
-    animation:
-        floatingEmoji
-        3s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes floatingEmoji {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-
-/* =========================================================
-   TYPING SCREEN
-   ========================================================= */
-
-.typing-box {
-
-    min-height: 150px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    margin:
-        15px auto 25px;
-
-    padding: 20px;
-
-    width: 100%;
-
-    max-width: 500px;
-}
-
-
-#typingText {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 20px;
-
-    line-height: 1.7;
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.9
-        );
-}
-
-
-/* =========================================================
-   BOYFRIEND'S DAY
-   ========================================================= */
-
-.boyfriend-day {
-
-    font-size:
-        clamp(
-            55px,
-            17vw,
-            90px
-        );
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #ffb9e7,
-            #e69cff
-        );
-
-    -webkit-background-clip: text;
-
-    background-clip: text;
-
-    color: transparent;
-
-    filter:
-        drop-shadow(
-            0 0 25px
-            rgba(
-                255,
-                100,
-                200,
-                0.25
-            )
-        );
-}
-
-
-.name {
-
-    font-family:
-        "Dancing Script",
-        cursive;
-
-    font-size: 32px;
-
-    color: #ffb4e8;
-
-    margin-bottom: 15px;
-}
-
-
-/* =========================================================
-   INTERACTIVE HEART
-   ========================================================= */
-
-.interactive-heart {
-
-    width: 150px;
-
-    height: 150px;
-
-    margin: 25px auto;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    touch-action: manipulation;
-}
-
-
-.heart-shape {
-
-    font-size: 105px;
-
-    filter:
-        drop-shadow(
-            0 0 25px
-            rgba(
-                255,
-                50,
-                180,
-                0.65
-            )
-        );
-
-    animation:
-        heartbeat
-        1.6s
-        ease-in-out
-        infinite;
-
-    transition:
-        transform 0.5s ease;
-}
-
-
-#heartInstruction {
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.6
-        );
-
-    font-size: 13px;
-}
-
-
-#heartMessage {
-
-    margin-top: 20px;
-
-    font-family:
-        "Dancing Script",
-        cursive;
-
-    font-size: 35px;
-
-    color: #ff9cdb;
-}
-
-
-/* =========================================================
-   FLOATING BACKGROUND HEARTS
-   ========================================================= */
+   FLOATING HEART BACKGROUND
+========================================================= */
 
 #hearts {
-
     position: fixed !important;
-
     inset: 0 !important;
-
     width: 100vw !important;
-
     height: 100dvh !important;
-
-    display: block !important;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-
     overflow: hidden !important;
-
     pointer-events: none !important;
-
-    z-index: 0 !important;
+    z-index: 1 !important;
 }
 
-
-#hearts .floating-heart {
-
+.floating-heart {
     position: fixed !important;
-
-    display: block !important;
-
-    left: 0 !important;
-
+    bottom: -60px !important;
     top: auto !important;
-
-    bottom: -50px !important;
-
-    width: max-content !important;
-
-    height: max-content !important;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-
-    line-height: 1 !important;
-
-    white-space: nowrap !important;
-
-    pointer-events: none !important;
-
-    z-index: 0 !important;
-
-    color:
-        rgba(
-            255,
-            130,
-            210,
-            0.45
-        );
-
+    left: 0;
+    display: block;
+    pointer-events: none;
+    color: rgba(255, 130, 210, 0.48);
+    line-height: 1;
+    z-index: 1;
     animation:
-        cleanFloatingHeart
-        var(--heart-duration, 8s)
-        linear
-        forwards !important;
+        floatingHeart var(--duration) linear forwards;
 }
 
-
-@keyframes cleanFloatingHeart {
+@keyframes floatingHeart {
 
     0% {
-
         opacity: 0;
-
         transform:
-            translate3d(
-                0,
-                0,
-                0
-            )
+            translate3d(0, 0, 0)
             rotate(0deg)
-            scale(0.7);
+            scale(.7);
     }
-
 
     10% {
-
-        opacity: 0.8;
+        opacity: .8;
     }
 
-
     50% {
-
-        opacity: 0.65;
-
+        opacity: .55;
         transform:
-            translate3d(
-                var(--heart-drift, 0px),
-                -50vh,
-                0
-            )
+            translate3d(var(--drift), -50vh, 0)
             rotate(180deg)
             scale(1);
     }
 
-
     100% {
-
         opacity: 0;
-
         transform:
-            translate3d(
-                calc(
-                    var(--heart-drift, 0px)
-                    * -0.5
-                ),
-                -115vh,
-                0
-            )
+            translate3d(calc(var(--drift) * -.5), -115vh, 0)
             rotate(360deg)
             scale(1.1);
     }
@@ -696,1152 +85,944 @@ button:active {
 
 
 /* =========================================================
-   MEMORY SCREENS
-   ========================================================= */
+   SCREENS
+========================================================= */
 
-.memory-screen {
-
-    padding: 0 !important;
-
-    background: #000;
-
-    align-items:
-        stretch !important;
-
-    justify-content:
-        stretch !important;
-
-    overflow: hidden !important;
-}
-
-
-.memory-photo {
-
-    position: absolute;
-
+.screen {
+    position: fixed;
     inset: 0;
-
     width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
 
-    height: 100%;
+    display: none;
 
-    overflow: hidden;
+    align-items: center;
+    justify-content: center;
 
-    z-index: 1;
-}
-
-
-.memory-photo img {
-
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    display: block;
-
-    /*
-       IMPORTANT:
-       COMPLETE PHOTO IS VISIBLE.
-       NO CROPPING.
-    */
-
-    object-fit: contain;
-
-    object-position:
-        center center;
-
-    opacity: 1;
-
-    visibility: visible;
-
-    background: #080309;
-
-    animation: none;
-}
-
-
-.photo-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 2;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,0.02) 15%,
-            rgba(0,0,0,0.08) 40%,
-            rgba(0,0,0,0.48) 68%,
-            rgba(0,0,0,0.94) 100%
-        );
-
-    pointer-events: none;
-}
-
-
-.memory-text {
-
-    position: absolute;
-
-    z-index: 5;
-
-    left: 50%;
-
-    bottom:
-        max(
-            30px,
-            env(safe-area-inset-bottom)
-        );
-
-    transform:
-        translateX(-50%);
-
-    width:
-        calc(
-            100% - 36px
-        );
-
-    max-width: 600px;
+    padding:
+        30px
+        max(20px, env(safe-area-inset-right))
+        30px
+        max(20px, env(safe-area-inset-left));
 
     text-align: center;
 
-    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    z-index: 10;
+
+    opacity: 0;
+}
+
+.screen.active {
+    display: flex;
+    animation: screenIn .7s ease forwards;
+}
+
+@keyframes screenIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 
-.memory-number {
+/* =========================================================
+   CONTENT
+========================================================= */
 
-    font-size: 11px;
+.content {
+    width: min(700px, 100%);
+    position: relative;
+    z-index: 20;
+}
 
+.tiny-heart {
+    font-size: 60px;
+    color: #ff8bd8;
+    margin-bottom: 20px;
+
+    animation:
+        softPulse 2s ease-in-out infinite;
+
+    text-shadow:
+        0 0 20px rgba(255, 100, 210, .6);
+}
+
+.emoji-big {
+    font-size: 65px;
+    margin-bottom: 22px;
+
+    animation:
+        softPulse 2.2s ease-in-out infinite;
+}
+
+.eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: .72rem;
     letter-spacing: 4px;
+    color: #e6a9d2;
+    margin-bottom: 18px;
+}
 
-    font-weight: 600;
+h1,
+h2 {
+    font-weight: normal;
+    line-height: 1.15;
+}
 
-    color: #ffb2e5;
+h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+}
 
-    margin-bottom: 12px;
+h2 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+.message {
+    max-width: 550px;
+    margin: 25px auto;
+    color: #eadde7;
+    font-size: 1.05rem;
+    line-height: 1.8;
 }
 
 
-.memory-text h2 {
+/* =========================================================
+   BUTTONS
+========================================================= */
 
-    font-size:
-        clamp(
-            35px,
-            10vw,
-            58px
+button {
+    border: 1px solid rgba(255, 150, 220, .45);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 105, 190, .18),
+            rgba(180, 80, 160, .08)
         );
 
-    color: white;
+    color: #fff;
 
-    text-shadow:
-        0 3px 20px
-        rgba(0,0,0,0.9);
+    padding: 15px 26px;
+    border-radius: 999px;
 
-    margin-bottom: 12px;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+
+    box-shadow:
+        0 0 20px rgba(255, 100, 200, .12);
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.02);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 105, 190, .30),
+            rgba(180, 80, 160, .15)
+        );
+
+    box-shadow:
+        0 8px 30px rgba(255, 80, 190, .22);
+}
+
+button:active {
+    transform: scale(.96);
+}
+
+.hidden-button {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.hidden-button.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    animation: buttonAppear .8s ease forwards;
+}
+
+@keyframes buttonAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
-.memory-text > p:not(.memory-number) {
+/* =========================================================
+   SCREEN 3
+========================================================= */
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+.typing-box {
+    width: min(600px, 100%);
+    min-height: 160px;
 
-    font-size: 19px;
+    margin: 30px auto;
 
-    line-height: 1.4;
+    padding: 30px;
 
-    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, .035);
+
+    border:
+        1px solid rgba(255, 150, 220, .18);
+
+    box-shadow:
+        0 0 35px rgba(255, 100, 200, .08);
+
+    backdrop-filter: blur(8px);
+}
+
+#typingText {
+    color: #f5ddeb;
+    font-size: 1.15rem;
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   BOYFRIEND'S DAY
+========================================================= */
+
+.boyfriend-day {
+    color: #fff;
     text-shadow:
-        0 2px 10px
-        rgba(0,0,0,0.9);
+        0 0 20px rgba(255, 100, 200, .35);
+}
 
+.name {
+    margin-top: 25px;
+    font-size: 1.6rem;
+    color: #ff9bdd;
+}
+
+
+/* =========================================================
+   INTERACTIVE HEART
+========================================================= */
+
+.hint {
+    color: #dcb5d0;
+    margin: 20px 0;
+}
+
+.interactive-heart {
+    width: 160px;
+    height: 160px;
+
+    margin: 20px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.heart-shape {
+    font-size: 90px;
+
+    filter:
+        drop-shadow(0 0 15px rgba(255, 80, 180, .55));
+
+    animation:
+        heartBeat 1.25s ease-in-out infinite;
+
+    transition:
+        transform .25s ease;
+}
+
+.interactive-heart:hover .heart-shape {
+    transform: scale(1.15);
+}
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.16);
+    }
+}
+
+#heartMessage {
+    min-height: 50px;
+    margin-top: 10px;
+    color: #ffb4e4;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   MEMORY SCREENS
+========================================================= */
+
+.memory-screen {
+    flex-direction: column;
+    gap: 25px;
+}
+
+.memory-photo {
+    position: relative;
+
+    width: min(800px, 92vw);
+    height: min(58vh, 560px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 25px;
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, .035);
+
+    border:
+        1px solid rgba(255, 150, 220, .18);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .45),
+        0 0 35px rgba(255, 90, 190, .08);
+}
+
+.memory-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    position: relative;
+    z-index: 2;
+}
+
+.photo-overlay {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(10, 4, 10, .2),
+            transparent 45%
+        );
+
+    z-index: 3;
+}
+
+.memory-text {
+    width: min(650px, 100%);
+}
+
+.memory-number {
+    font-family: Arial, sans-serif;
+    letter-spacing: 4px;
+    font-size: .7rem;
+    color: #dc8ec1;
+    margin-bottom: 10px;
+}
+
+.memory-text h2 {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    margin-bottom: 12px;
+}
+
+.memory-text p:not(.memory-number) {
+    color: #e6d6e2;
+    line-height: 1.7;
     margin-bottom: 20px;
 }
 
 
 /* =========================================================
    ENVELOPE
-   ========================================================= */
+========================================================= */
 
 .envelope-screen {
-
-    overflow-y: auto !important;
+    align-items: center;
 }
-
 
 .envelope-intro {
-
-    width: 100%;
-
-    max-width: 500px;
-
-    text-align: center;
+    width: min(650px, 100%);
 }
 
-
 .small-label {
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    color: #ffacdF;
-
+    font-family: Arial, sans-serif;
+    letter-spacing: 4px;
+    color: #dc9bc8;
+    font-size: .7rem;
     margin-bottom: 15px;
 }
 
-
 .envelope-intro h1 {
-
-    font-size:
-        clamp(
-            50px,
-            16vw,
-            80px
-        );
-
-    margin-bottom: 10px;
+    font-size: clamp(2.5rem, 8vw, 4rem);
 }
 
-
-.envelope-intro > p {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 19px;
-
-    line-height: 1.5;
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.85
-        );
+.envelope-intro > p:not(.small-label):not(.tap-envelope) {
+    margin: 15px auto 25px;
+    color: #decddd;
 }
-
-
-/* =========================================================
-   ENVELOPE WRAPPER
-   ========================================================= */
 
 .envelope-wrapper {
+    width: 280px;
+    height: 190px;
 
-    width: 290px;
+    margin: 25px auto 10px;
 
-    height: 210px;
-
-    margin:
-        35px auto 10px;
-
-    perspective: 1200px;
+    perspective: 1000px;
 
     cursor: pointer;
-
-    touch-action: manipulation;
 }
-
 
 .envelope {
-
-    width: 290px;
-
-    height: 185px;
-
     position: relative;
 
-    transform-style:
-        preserve-3d;
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
 
     transition:
-        transform 0.5s ease;
+        transform 1s ease;
 }
 
+.envelope-wrapper.open .envelope {
+    transform:
+        translateY(25px);
+}
 
-.envelope-back {
-
+.envelope-back,
+.envelope-front {
     position: absolute;
-
     inset: 0;
+
+    border-radius: 8px;
 
     background:
         linear-gradient(
             145deg,
-            #ff75c8,
-            #b72b82
+            #7b315d,
+            #4e1e40
         );
 
-    border-radius: 10px;
-
-    box-shadow:
-        0 20px 50px
-        rgba(
-            255,
-            74,
-            190,
-            0.35
-        );
+    border:
+        1px solid rgba(255, 180, 225, .25);
 }
 
-
-.letter-paper {
-
-    position: absolute;
-
-    width: 235px;
-
-    height: 150px;
-
-    left: 27px;
-
-    bottom: 13px;
-
-    background: #fff8fc;
-
-    color: #7d315f;
-
-    border-radius: 5px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    z-index: 2;
-
-    transition:
-        transform 1s
-        cubic-bezier(
-            .22,
-            1,
-            .36,
-            1
-        ),
-
-        bottom 1s
-        cubic-bezier(
-            .22,
-            1,
-            .36,
-            1
-        );
-
-    box-shadow:
-        0 5px 20px
-        rgba(
-            0,
-            0,
-            0,
-            0.15
-        );
+.envelope-back {
+    z-index: 1;
 }
-
-
-.letter-paper span {
-
-    font-size: 28px;
-}
-
-
-.letter-paper p {
-
-    color: #7d315f;
-
-    font-family:
-        "Dancing Script",
-        cursive;
-
-    font-size: 22px;
-
-    margin: 7px 0;
-}
-
 
 .envelope-front {
-
-    position: absolute;
-
-    left: 0;
-
-    bottom: 0;
-
-    width: 0;
-
-    height: 0;
-
-    border-left:
-        145px solid transparent;
-
-    border-right:
-        145px solid transparent;
-
-    border-bottom:
-        100px solid #ed55ad;
-
     z-index: 4;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 55%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
 }
 
-
 .envelope-flap {
-
     position: absolute;
 
     top: 0;
-
     left: 0;
 
-    width: 0;
+    width: 100%;
+    height: 100%;
 
-    height: 0;
+    background: #9b3f72;
 
-    border-left:
-        145px solid transparent;
+    clip-path:
+        polygon(
+            0 0,
+            50% 52%,
+            100% 0
+        );
 
-    border-right:
-        145px solid transparent;
-
-    border-top:
-        108px solid #ff91d8;
-
-    transform-origin:
-        top center;
-
-    z-index: 5;
+    transform-origin: top;
 
     transition:
-        transform 1s
-        cubic-bezier(
-            .22,
-            1,
-            .36,
-            1
-        );
-}
-
-
-.envelope-heart {
-
-    position: absolute;
+        transform .9s ease;
 
     z-index: 6;
-
-    left: 50%;
-
-    top: 50%;
-
-    transform:
-        translate(
-            -50%,
-            -50%
-        );
-
-    font-size: 38px;
-
-    color: white;
-
-    text-shadow:
-        0 0 15px
-        rgba(
-            255,
-            255,
-            255,
-            0.8
-        ),
-
-        0 0 30px
-        rgba(
-            255,
-            70,
-            190,
-            0.7
-        );
-
-    transition:
-        opacity 0.4s ease,
-        transform 0.5s ease;
 }
 
-
-.envelope-wrapper.opened
-.envelope-flap {
-
+.envelope-wrapper.open .envelope-flap {
     transform:
         rotateX(180deg);
+    z-index: 0;
 }
 
-
-.envelope-wrapper.opened
 .letter-paper {
+    position: absolute;
 
-    transform:
-        translateY(-100px);
+    width: 82%;
+    height: 145px;
 
-    bottom: 35px;
+    left: 9%;
+    bottom: 12px;
+
+    background: #fff8fc;
+    color: #51213e;
+
+    border-radius: 6px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 3;
+
+    transition:
+        transform 1s ease;
 }
 
+.envelope-wrapper.open .letter-paper {
+    transform:
+        translateY(-105px);
+}
 
-.envelope-wrapper.opened
+.letter-paper span {
+    font-size: 30px;
+}
+
+.letter-paper p {
+    margin-top: 6px;
+    font-size: 1.1rem;
+}
+
+.letter-paper small {
+    margin-top: 4px;
+    opacity: .7;
+}
+
 .envelope-heart {
+    position: absolute;
 
-    opacity: 0;
+    left: 50%;
+    top: 58%;
 
     transform:
-        translate(
-            -50%,
-            -50%
-        )
-        scale(0.3);
+        translate(-50%, -50%);
+
+    z-index: 8;
+
+    font-size: 34px;
+
+    transition:
+        opacity .5s ease;
 }
 
+.envelope-wrapper.open .envelope-heart {
+    opacity: 0;
+}
 
 .tap-envelope {
-
-    font-size: 12px !important;
-
-    color:
-        #ffb4e6 !important;
-
-    animation:
-        envelopeHint
-        2s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes envelopeHint {
-
-    0%,
-    100% {
-        opacity: 0.5;
-    }
-
-    50% {
-        opacity: 1;
-    }
-}
-
-
-/* =========================================================
-   HIDDEN BUTTON
-   ========================================================= */
-
-.hidden-button {
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transform:
-        translateY(15px);
-
-    margin-top: 15px;
-}
-
-
-.hidden-button.show {
-
-    opacity: 1;
-
-    pointer-events: auto;
-
-    transform:
-        translateY(0);
+    color: #e1b7d3;
+    margin: 15px 0;
 }
 
 
 /* =========================================================
    LETTER
-   ========================================================= */
+========================================================= */
 
 .letter-screen {
+    align-items: flex-start;
+    justify-content: center;
 
-    overflow-y: auto !important;
-
-    align-items:
-        flex-start !important;
-
-    padding-top:
-        max(
-            35px,
-            env(safe-area-inset-top)
-        ) !important;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
-
-
-.letter-container {
-
-    width: 100%;
-
-    max-width: 600px;
-
-    text-align: center;
-}
-
 
 .letter {
+    width: min(760px, 100%);
 
-    position: relative;
+    padding: 40px 32px;
 
-    padding:
-        30px 23px;
+    margin: auto;
+
+    border-radius: 28px;
 
     background:
         linear-gradient(
-            135deg,
-            rgba(
-                255,
-                250,
-                253,
-                0.98
-            ),
-            rgba(
-                255,
-                237,
-                248,
-                0.96
-            )
+            145deg,
+            rgba(255, 245, 252, .075),
+            rgba(255, 255, 255, .025)
         );
 
-    color: #71305b;
-
-    border-radius: 14px;
+    border:
+        1px solid rgba(255, 170, 225, .2);
 
     box-shadow:
-        0 20px 60px
-        rgba(
-            0,
-            0,
-            0,
-            0.4
-        );
+        0 20px 70px rgba(0, 0, 0, .45),
+        0 0 40px rgba(255, 90, 190, .08);
 
-    animation:
-        letterAppear
-        1s
-        ease
-        forwards;
+    backdrop-filter: blur(12px);
+
+    text-align: left;
 }
-
-
-@keyframes letterAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(35px)
-            scale(0.95);
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
 
 .letter-top {
-
-    font-size: 32px;
-
-    margin-bottom: 3px;
-}
-
-
-.letter h2 {
-
-    font-size: 42px;
-
-    color: #a23878;
-
+    text-align: center;
+    font-size: 48px;
     margin-bottom: 20px;
 }
 
+.letter h2 {
+    font-size: 2.2rem;
+    margin-bottom: 28px;
+    text-align: center;
+}
 
 .letter p {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 18px;
-
-    line-height: 1.65;
-
-    margin: 14px 0;
+    color: #eadde7;
+    font-size: 1rem;
+    line-height: 1.9;
+    margin-bottom: 24px;
 }
 
+.letter-love {
+    text-align: center;
+
+    padding: 28px 20px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255, 105, 190, .08);
+
+    border:
+        1px solid rgba(255, 120, 200, .2);
+
+    box-shadow:
+        0 0 30px rgba(255, 90, 190, .08);
+}
+
+.letter-love strong {
+    display: inline-block;
+
+    color: #ff82d3;
+
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+
+    text-shadow:
+        0 0 12px rgba(255, 100, 210, .7);
+
+    animation:
+        lovePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes lovePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.07);
+    }
+}
 
 .letter-final {
+    text-align: center !important;
 
-    font-weight: 700;
+    color: #ffc4e8 !important;
 
-    color: #b3317d;
-
-    margin-top: 22px !important;
+    font-size: 1.1rem !important;
 }
-
 
 .signature {
+    text-align: center;
 
-    margin-top: 25px;
+    color: #dcb4ce;
 
-    font-family:
-        "Dancing Script",
-        cursive;
+    line-height: 1.5;
 
-    font-size: 22px;
-
-    color: #913269;
+    margin-top: 30px;
 }
 
+.signature strong {
+    color: #ff9bdd;
+    font-size: 1.4rem;
+}
 
 .signature span {
-
-    font-size: 30px;
+    font-size: 1.3rem;
 }
 
-
 .continue-button {
-
-    margin-top: 20px;
+    display: block;
+    margin: 35px auto 0;
 }
 
 
 /* =========================================================
    FINAL SCREEN
-   ========================================================= */
-
-.final {
-
-    padding-bottom: 20px;
-}
-
+========================================================= */
 
 .final-heart {
-
     font-size: 80px;
 
     margin-bottom: 15px;
 
-    filter:
-        drop-shadow(
-            0 0 30px
-            rgba(
-                255,
-                70,
-                190,
-                0.65
-            )
-        );
-
     animation:
-        heartbeat
-        1.7s
-        ease-in-out
-        infinite;
+        heartBeat 1.2s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 0 25px rgba(255, 80, 190, .65));
 }
 
+.final h2 {
+    margin-bottom: 20px;
+}
 
 .final-message {
+    max-width: 600px;
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+    margin: auto;
 
-    font-size: 18px;
+    color: #e8d8e3;
 
-    line-height: 1.55;
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.85
-        );
-
-    max-width: 500px;
-
-    margin:
-        0 auto 20px;
+    line-height: 1.8;
 }
-
 
 .final-love {
-
-    font-size: 40px;
-
-    color: #ff9ddd;
-
-    margin-bottom: 15px;
+    font-size: 45px;
+    margin: 25px;
 }
-
 
 .final-signature {
-
-    font-family:
-        "Dancing Script",
-        cursive;
-
-    font-size: 23px;
-
-    color: #ffb9e8;
-
-    line-height: 1.5;
-
-    margin-bottom: 22px;
+    color: #d9b7cd;
+    margin-bottom: 25px;
 }
 
-
 .made {
-
     margin-top: 20px;
 
-    font-size: 10px;
+    font-family: Arial, sans-serif;
 
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.35
-        );
+    font-size: .65rem;
 
-    letter-spacing: 1px;
+    letter-spacing: 4px;
+
+    color: #a97c9e;
 }
 
 
 /* =========================================================
    MILLION HEARTS
-   ========================================================= */
+========================================================= */
 
 .celebration-heart {
-
     position: fixed !important;
+
+    left: 50%;
+    top: 50%;
 
     z-index: 99999 !important;
 
-    display: block !important;
+    pointer-events: none;
 
-    width: max-content !important;
+    font-size: var(--size);
 
-    height: max-content !important;
+    color: #ff7dce;
 
-    margin: 0 !important;
-
-    padding: 0 !important;
-
-    line-height: 1 !important;
-
-    color: #ff75cf !important;
-
-    pointer-events: none !important;
-
-    transform:
-        translate(
-            -50%,
-            -50%
-        )
-        scale(0);
+    line-height: 1;
 
     text-shadow:
-
-        0 0 10px
-        rgba(
-            255,
-            100,
-            210,
-            0.8
-        ),
-
-        0 0 25px
-        rgba(
-            255,
-            100,
-            210,
-            0.5
-        );
+        0 0 10px rgba(255, 100, 210, .8),
+        0 0 25px rgba(255, 100, 210, .5);
 
     animation:
-        millionHeartExplosion
-        2.8s
-        cubic-bezier(
-            .15,
-            .75,
-            .25,
-            1
-        )
-        forwards;
+        millionHeart 2.8s cubic-bezier(.15, .75, .25, 1) forwards;
 }
 
-
-@keyframes millionHeartExplosion {
+@keyframes millionHeart {
 
     0% {
-
         opacity: 0;
-
         transform:
-            translate(
-                -50%,
-                -50%
-            )
+            translate(-50%, -50%)
             scale(0);
     }
 
-
     10% {
-
         opacity: 1;
 
         transform:
-            translate(
-                -50%,
-                -50%
-            )
+            translate(-50%, -50%)
             scale(1.2);
     }
 
-
     100% {
-
         opacity: 0;
 
         transform:
             translate(
-                calc(
-                    -50% + var(--x)
-                ),
-                calc(
-                    -50% + var(--y)
-                )
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
             )
-            scale(0.8)
+            scale(.8)
             rotate(360deg);
     }
 }
 
 
 /* =========================================================
-   SMALL PHONES
-   ========================================================= */
+   SMALL HEART EFFECT
+========================================================= */
 
-@media (max-width: 380px) {
+.burst-heart {
+    position: fixed !important;
 
-    .screen {
+    left: 50%;
+    top: 50%;
 
-        padding-left: 15px;
+    z-index: 9999;
 
-        padding-right: 15px;
-    }
+    pointer-events: none;
 
+    font-size: var(--size);
 
-    h1 {
+    animation:
+        burstHeart 1.8s ease-out forwards;
+}
 
-        font-size: 46px;
-    }
+@keyframes burstHeart {
 
-
-    .message {
-
-        font-size: 18px;
-    }
-
-
-    button {
-
-        font-size: 12px;
-
-        padding:
-            13px 20px;
-    }
-
-
-    .interactive-heart {
-
-        width: 130px;
-
-        height: 130px;
-    }
-
-
-    .heart-shape {
-
-        font-size: 90px;
-    }
-
-
-    .envelope-wrapper {
+    from {
+        opacity: 1;
 
         transform:
-            scale(0.88);
-
-        margin-top: 20px;
+            translate(-50%, -50%)
+            scale(.5);
     }
 
+    to {
+        opacity: 0;
 
-    .letter {
-
-        padding:
-            25px 18px;
-    }
-
-
-    .letter h2 {
-
-        font-size: 38px;
-    }
-
-
-    .letter p {
-
-        font-size: 17px;
-    }
-
-
-    .final-heart {
-
-        font-size: 70px;
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.1)
+            rotate(180deg);
     }
 }
 
 
 /* =========================================================
-   LANDSCAPE PHONES
-   ========================================================= */
+   RESPONSIVE
+========================================================= */
 
-@media
-(max-height: 500px)
-and
-(orientation: landscape) {
+@media (max-width: 700px) {
 
     .screen {
-
-        align-items:
-            flex-start;
-
-        overflow-y: auto;
+        padding: 22px 18px;
     }
 
-
-    .content {
-
-        padding-top: 30px;
-
-        padding-bottom: 30px;
+    .message {
+        font-size: .98rem;
     }
 
+    button {
+        font-size: .92rem;
+        padding: 13px 21px;
+    }
 
-    h1 {
+    .memory-photo {
+        height: 48vh;
+        border-radius: 20px;
+    }
 
+    .memory-text p:not(.memory-number) {
+        font-size: .92rem;
+    }
+
+    .letter {
+        padding: 30px 21px;
+        border-radius: 22px;
+    }
+
+    .letter p {
+        font-size: .94rem;
+        line-height: 1.8;
+    }
+
+    .letter h2 {
+        font-size: 1.9rem;
+    }
+
+    .envelope-wrapper {
+        transform: scale(.9);
+    }
+}
+
+
+@media (max-height: 700px) {
+
+    .memory-photo {
+        height: 42vh;
+    }
+
+    .memory-text h2 {
+        font-size: 1.7rem;
+    }
+
+    .memory-text p:not(.memory-number) {
+        margin-bottom: 10px;
+    }
+
+    .emoji-big {
         font-size: 45px;
     }
 
-
-    .interactive-heart {
-
-        margin: 10px auto;
-    }
-
-
-    .envelope-wrapper {
-
-        transform:
-            scale(0.7);
-
-        margin-top: 5px;
-
-        margin-bottom: -30px;
-    }
-
-
-    .memory-text {
-
-        bottom: 20px;
-    }
-
-
-    .memory-text h2 {
-
-        font-size: 35px;
-    }
-
-
-    .memory-text >
-    p:not(.memory-number) {
-
-        font-size: 16px;
-    }
-}
-
-/* ================================
-   EMOTIONAL LOVE MESSAGE
-================================ */
-
-.letter-love {
-    text-align: center;
-    font-size: 1.08rem;
-    line-height: 1.9;
-    margin: 28px 0;
-    padding: 22px 18px;
-    border-radius: 20px;
-    background: rgba(255, 105, 180, 0.10);
-    border: 1px solid rgba(255, 120, 200, 0.25);
-    box-shadow:
-        0 0 20px rgba(255, 100, 190, 0.10),
-        inset 0 0 20px rgba(255, 100, 190, 0.04);
-}
-
-.letter-love strong {
-    display: inline-block;
-    font-size: 1.45rem;
-    color: #ff75cf;
-    text-shadow:
-        0 0 8px rgba(255, 100, 210, 0.6),
-        0 0 18px rgba(255, 100, 210, 0.35);
-    animation: lovePulse 1.8s ease-in-out infinite;
-}
-
-@keyframes lovePulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.06);
-    }
-}
-
-@media (max-width: 600px) {
-
-    .letter-love {
-        font-size: 1rem;
-        padding: 20px 14px;
-    }
-
-    .letter-love strong {
-        font-size: 1.25rem;
+    .tiny-heart {
+        font-size: 45px;
     }
 }
