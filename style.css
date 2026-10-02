@@ -1795,3 +1795,53 @@ and
         font-size: 16px;
     }
 }
+
+/* ================================
+   EMOTIONAL LOVE MESSAGE
+================================ */
+
+.letter-love {
+    text-align: center;
+    font-size: 1.08rem;
+    line-height: 1.9;
+    margin: 28px 0;
+    padding: 22px 18px;
+    border-radius: 20px;
+    background: rgba(255, 105, 180, 0.10);
+    border: 1px solid rgba(255, 120, 200, 0.25);
+    box-shadow:
+        0 0 20px rgba(255, 100, 190, 0.10),
+        inset 0 0 20px rgba(255, 100, 190, 0.04);
+}
+
+.letter-love strong {
+    display: inline-block;
+    font-size: 1.45rem;
+    color: #ff75cf;
+    text-shadow:
+        0 0 8px rgba(255, 100, 210, 0.6),
+        0 0 18px rgba(255, 100, 210, 0.35);
+    animation: lovePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes lovePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .letter-love {
+        font-size: 1rem;
+        padding: 20px 14px;
+    }
+
+    .letter-love strong {
+        font-size: 1.25rem;
+    }
+}
